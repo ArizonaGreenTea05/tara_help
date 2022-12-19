@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Tara_help
 {
 
@@ -31,9 +33,55 @@ public class Tara_help
         }
     }
 
+    private void zahlenratenUmgekehrt()
+    {
+        int GREATER = 1;
+        int SMALLER = 0;
+        int RIGHT_GUESS = 1;
+        int WRONG_GUESS = 0;
+
+        Scanner s = new Scanner(System.in);
+        int min = 1;
+        int max = 100;
+        int input = -1;
+        int result = -1;
+        int mid = -1;
+        int greaterOrSmaller = -1;
+        int rightOrWrongGuess = -1;
+
+        System.out.print("bruda gib Zahl zwischen " + min + " und " + max + ": ");
+        input = s.nextInt();
+        do
+        {
+            mid = min + (max-min)/2;
+            System.out.println("ist deine Zahl " + mid + "? (" + RIGHT_GUESS + "=ja, " + WRONG_GUESS + "=nein)");
+            rightOrWrongGuess = s.nextInt();
+            if(rightOrWrongGuess == RIGHT_GUESS)
+            {
+                result = mid;
+                break;
+            }
+
+            System.out.println("ist deine Zahl groesser oder kleiner als " + mid + "? (" + GREATER + "=groesser, " + SMALLER + "=kleiner)");
+            greaterOrSmaller = s.nextInt();
+
+            if(greaterOrSmaller == GREATER)
+            {
+                min = mid;
+            }
+            else
+            {
+                max = mid;
+            }
+        } while(result != input);
+
+        System.out.println("bruda ich bin so schlau ey");
+    }
+
     public static void main(String[] args)
     {
         Tara_help tHelp = new Tara_help();
-        tHelp.hausaufgaben_26_11_22();
+        //tHelp.hausaufgaben_26_11_22();
+        tHelp.zahlenratenUmgekehrt();
     }
 }
